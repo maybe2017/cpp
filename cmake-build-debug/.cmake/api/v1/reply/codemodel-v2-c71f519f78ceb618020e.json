@@ -1,0 +1,141 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "c_codes",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ArrayPointer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ArrayPointer-Debug-a10143e150b5ad05d8a3.json",
+					"name" : "ArrayPointer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "BinarySearch::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BinarySearch-Debug-f622baaad7534aba9a80.json",
+					"name" : "BinarySearch",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ConstPointer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ConstPointer-Debug-97b3260d983f5ec09a58.json",
+					"name" : "ConstPointer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "FunctionUse::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-FunctionUse-Debug-7be3405a292c07609853.json",
+					"name" : "FunctionUse",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Hello::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Hello-Debug-88752af5d2c0cb4e473a.json",
+					"name" : "Hello",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "HelloMenory::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HelloMenory-Debug-addbdd09ad5e707fb92e.json",
+					"name" : "HelloMenory",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MemoryManageDeep::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MemoryManageDeep-Debug-51eacd4e539b69ced522.json",
+					"name" : "MemoryManageDeep",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Person::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Person-Debug-7a83d968b084d6f49542.json",
+					"name" : "Person",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PointerAndRef::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PointerAndRef-Debug-552702797a4da3100fa0.json",
+					"name" : "PointerAndRef",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "c_codes::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-c_codes-Debug-a515d288c4b5eedf4a20.json",
+					"name" : "c_codes",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/mayu/Documents/workspace/c_codes/cmake-build-debug",
+		"source" : "/Users/mayu/Documents/workspace/c_codes"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

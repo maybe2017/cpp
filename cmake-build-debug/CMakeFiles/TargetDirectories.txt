@@ -1,0 +1,12 @@
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/c_codes.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/Hello.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/HelloMenory.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/BinarySearch.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/FunctionUse.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/PointerAndRef.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/Person.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/ArrayPointer.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/ConstPointer.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/MemoryManageDeep.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mayu/Documents/workspace/c_codes/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.25)
+project(c_codes)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(c_codes main.cpp)
+add_executable(Hello HelloWorld.cpp)
+add_executable(HelloMenory MemoryManage.cpp)
+add_executable(BinarySearch arg/BinarySearch.cpp)
+add_executable(FunctionUse FunctionUse.cpp)
+add_executable(PointerAndRef PointerAndRef.cpp)
+add_executable(Person selfClass/Conversation.cpp)
+add_executable(ArrayPointer ArrayPointer.cpp)
+add_executable(ConstPointer ConstPointer.cpp)
+add_executable(MemoryManageDeep MemoryManageDeep.cpp)
