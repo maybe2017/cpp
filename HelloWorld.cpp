@@ -1,8 +1,8 @@
-//
-// Created by 马瑜 on 2023/5/24.
-//
 #include <cstdio>
 #include <iostream>
+
+// define无类型, 不可以进行类型检查
+// const有类型,可以进行编译器类型的安全检查 尽量使用const代替#define
 #define DEFAULT_CHANNEL "default"
 
 void testBaseType();
@@ -10,8 +10,13 @@ void printCurrentCompilerInfo();
 
 int main(){
     using namespace std;
-    // 常量
+
+    // 只读变量 c++11标准中将const与constexpr分开
+    // 即凡是表达'只读'语义的场景都使用 const，表达'常量'语义的场景都使用 constexpr(只有常量才能初始化 array 容器)
+    // '只读' 和 '不允许被修改' 之间并没有必然的联系，变量'只读'，表示无法通过变量自身去修改值，但是可能被其他变量修改(如常量引用)
     const int weekDay = 7;
+    constexpr int _weekDay = weekDay;
+
     testBaseType();
     std::cout << "---------当前编译器信息---------" << std::endl;
     printCurrentCompilerInfo();

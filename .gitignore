@@ -1,0 +1,14 @@
+/cmake-build-debug/
+.idea
+cmake-build-*/
+cmake-build-debug
+
+*.d
+*.obj
+*.o
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
+*~
+*.swp

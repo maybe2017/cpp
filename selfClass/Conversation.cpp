@@ -31,6 +31,7 @@ namespace mayu {
     }
 
     Person::~Person() {
+       std::cout << "Person的析构函数被调用！" << std::endl;
     }
 
     std::ostream &operator<<(std::ostream &os, const Person &person) {
