@@ -12,3 +12,4 @@ cmake-build-debug
 *.pdb
 *~
 *.swp
+.clang-format
