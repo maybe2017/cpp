@@ -34,6 +34,7 @@ namespace mayu {
        std::cout << "Person的析构函数被调用！" << std::endl;
     }
 
+    // TODO 用全局友元
     std::ostream &operator<<(std::ostream &os, const Person &person) {
         os << "age: " << person.age << " sex: " << person.sex << " married: " << person.married;
         return os;
