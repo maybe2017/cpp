@@ -3,17 +3,12 @@
 //
 
 #include <string>
-
-class Person;
-
-int main() {
-    typedef Person P;
-    P mayu = new P();
-}
+#include <iostream>
 
 // 当使用前向引用声明时，只能使用被声明的符号，而不能涉及类的任何细节
 // 只能定义指针、引用、以及用于函数形参的指针和引用
 class Book;
+class Person;
 
 class Person{
 private:
@@ -27,4 +22,33 @@ public:
 class Book{
 private:
     std::string bookName;
+public:
+    // 默认构造函数
+    Book(){}
+    Book(std::string name) {
+        this->bookName = name;
+    }
+
+    std::string getName() {
+        return this ->bookName;
+    };
+
+    // 重载
+    std::string getName(Book book) {
+        return book.bookName;
+    };
+
+    std::string getName(Book book, bool addLogDetails) {
+        return book.bookName;
+    };
+
+    std::string getName(bool addLogDetails, Book book) {
+        return book.bookName;
+    };
 };
+
+int main() {
+    Book *b = new Book();
+    Book *c = new Book("c++");
+    std::cout << b->getName(*c) << std::endl;
+}

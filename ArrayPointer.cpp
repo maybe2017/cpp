@@ -61,6 +61,7 @@ void oneDimensionalArray() {
 // 数组的定义
 void initArry() {
     int length = 5;
+    int *i = new int(5);
 
     // 这样定义时 元素的默认值是随机的
     int arr[length];
