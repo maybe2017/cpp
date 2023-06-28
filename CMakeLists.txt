@@ -20,12 +20,14 @@ add_executable(ConstPointer ConstPointer.cpp)
 add_executable(MemoryManageDeep MemoryManageDeep.cpp)
 add_executable(DestructorAndDeepCopy DestructorAndDeepCopy.cpp)
 
-# 添加 selfClass 子目录
-add_subdirectory(./selfClass/)
-# 对名称为FunctionUse的可执行程序 要链接的库文件的名字 相当于gcc中的-l(小写的l)参数
-target_link_libraries(FunctionUse selfClassLib)
+## 添加 selfClass 子目录
+#add_subdirectory(./selfClass/)
+## 对名称为FunctionUse的可执行程序 要链接的库文件的名字 相当于gcc中的-l(小写的l)参数
+#target_link_libraries(FunctionUse selfClassLib)
 
 # 去哪里找头文件 相当于gcc/clang 中的-I(i的大写字母)参数
 #include_directories("./selfClass/")
 
 add_executable(StaticUse StaticUse.cpp)
+add_executable(OverRideUse OverRideUse.cpp)
+add_executable(InheritanceUse InheritanceUse.cpp)
