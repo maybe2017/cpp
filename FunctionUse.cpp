@@ -1,10 +1,11 @@
 //
 // 函数相关
+// 普通指针 -> 用于读写目标内存里的值；函数指针 -> 用于调用目标函数!【当知道了一个函数的地址和类型，就能够调用这个函数】
 //
 
-#include <string>
+#include "selfClass/CommonMethod.h"
 #include <iostream>
-
+#include <string>
 // 当使用前向引用声明时，只能使用被声明的符号，而不能涉及类的任何细节
 // 只能定义指针、引用、以及用于函数形参的指针和引用
 class Book;
@@ -23,7 +24,6 @@ class Book{
 private:
     std::string bookName;
 public:
-    // 默认构造函数
     Book(){}
     Book(std::string name) {
         this->bookName = name;
@@ -33,22 +33,46 @@ public:
         return this ->bookName;
     };
 
-    // 重载
-    std::string getName(Book book) {
-        return book.bookName;
-    };
-
-    std::string getName(Book book, bool addLogDetails) {
-        return book.bookName;
-    };
-
-    std::string getName(bool addLogDetails, Book book) {
-        return book.bookName;
-    };
+    // 这个函数指针的类型是: void (int,int)*
+    static void getFunctionAddress(void (*p)(int,int)) {
+         std::cout << "函数地址为: " << &p << ", 通过函数指针进行函数调用: " << std::endl;
+         p(100, 200);
+    }
 };
 
-int main() {
-    Book *b = new Book();
-    Book *c = new Book("c++");
-    std::cout << b->getName(*c) << std::endl;
+
+// 函数类型: 返回值为void，参数为(int,int)的函数
+// 指向改函数的指针类型: void (int,int)*
+// 声明指向这个函数的指针: void (*p)(int,int)
+void example(int a, int b) {
+    printf("example被调用: a = %d, b = %d; 执行结果: %d\n", a, b, a + b);
 }
+
+//typedef void (*P_FUNCTION_OF_EXAMPLE) (const int *, size_t);
+
+// 通过函数指针做形参 来调用函数
+void doInvokeFunction(P_FUNCTION_OF_EXAMPLE p_func, const int *arr, size_t arrLength) {
+    p_func(arr, arrLength);
+}
+void printArr(const int *arr, size_t length) {
+    std::cout << "----遍历开始----" << std::endl;
+    if (arr) {
+         for (size_t i = 0; i < length; ++i) {
+             std::cout << "数组arr[" << i << "]: " << *(arr + i) << std::endl;
+         }
+    }
+    std::cout << "----遍历结束----" << std::endl;
+}
+
+int main() {
+    Book *c = new Book("c++");
+    c -> getFunctionAddress(&example);
+    int arr[10];
+//    P_FUNCTION_OF_EXAMPLE p_func = &printArr;
+    using namespace mayu;
+    P_FUNCTION_OF_EXAMPLE p_func = &CommonMethod::printArr;
+//    doInvokeFunction(&mayu::CommonMethod::printArr, arr, 10);
+    doInvokeFunction(p_func, arr, 10);
+}
+
+

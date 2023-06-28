@@ -61,11 +61,11 @@ void oneDimensionalArray() {
 // 数组的定义
 void initArry() {
     int length = 5;
-    int *i = new int(5);
+    new int(5);
 
     // 这样定义时 元素的默认值是随机的
     int arr[length];
-    cout << "数组名称直接运算" << setw(20) << "地址" << setw(26) << "值" << endl;
+    cout << "数组中的元素不会默认初始化" << setw(20) << "地址" << setw(26) << "值" << endl;
     for(int i = 0; i < length; i++) {
         cout << "arr + " << i << setw(27) << long(arr + i) << setw(25) << *(arr + i) << endl;
     }
