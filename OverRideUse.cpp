@@ -33,6 +33,7 @@ public:
         return this->age;
     }
 
+
     // 1+1
     // 成员函数: 外部调用的本质：p1.operator+(p2) ==>> 只是可以简化成 p1 + p2 (注意这个形式，被调用者在左边，形参在右边)
     Person operator+(Person &p) {
@@ -73,6 +74,8 @@ int main() {
 
     person2.operator=(person1);
     person3 = person2 = person1;
+
+    std::cout << person1 << std::endl;
 
     std::cout << person1.operator+(person2) << std::endl;
     std::cout << person1 + person2 << std::endl;
