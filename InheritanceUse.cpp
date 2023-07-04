@@ -40,14 +40,13 @@ public:
     virtual void print() {
         std::cout << "Base print被调用" << std::endl;
     }
+
     // 纯虚函数
     virtual void fun() = 0;
-    // 纯虚函数
-    virtual void fun2() = 0;
 
-    virtual void use() {
-        fun();
-        fun2();
+    // final 不允许子类重写
+    virtual void funcOfFinal() final {
+
     };
 };
 Base::~Base() {
@@ -55,8 +54,8 @@ Base::~Base() {
     //
 }
 
-
-class Child : public Base {
+// 被声明为final的类不能继续派生
+class Child final : public Base {
 private:
     int self;
 public:
@@ -66,13 +65,10 @@ public:
     ~Child(){
         std::cout << "Child析构被调用" << std::endl;
     }
-    void print() {
+    void print() override {
         std::cout << "Child print被调用" << std::endl;
     }
     virtual void fun(){
-
-    }
-    virtual void fun2(){
 
     }
 };
@@ -87,23 +83,42 @@ public:
     ~Child2(){
         std::cout << "Child2析构被调用" << std::endl;
     }
-    // override
-    void print() {
+    virtual void print() override {
         std::cout << "Child2 print被调用" << std::endl;
     }
-    virtual void fun(){
-
-    }
-    virtual void fun2(){
+    virtual void fun() {
 
     }
 };
 
-int main() {
+// void (*t)();
+void test(){
 
-    Base *base = new Child2; // 继承关系，父类的指针指向子类对象，子类重写父类的虚函数 ==>> 根据对象的实际类型调用 该类型中的函数。
-    base->use(); // 通过子类对象里面的 vfptr 找到虚函数表 ，再从表里面找到函数地址，通过函数地址找到函数地址进行调用 （空间、时间 换来了灵活性，减少了代码量）
-    delete base;
+}
+void test1(){
+
+}
+
+
+typedef long long u64;
+typedef void(*func)();
+typedef void(*t)();
+int main() {
+    // 20
+    Child2 a;
+    // 将(&a)强制类型转换为(u64 *)，来把从&a开始的8个字节当作一个整体，
+    u64 *addrOfA = (u64 *)&a;
+    long long  vaule = *addrOfA;
+    u64* adress = (u64*)vaule;
+    // 然后对其进行解引用，就相当于取出这4个字节中的数据，取出的数据就是虚函数表的地址
+    u64* arr = (u64*)*addrOfA;
+
+    t t1 = &test;
+
+
+//    Base *base = new Child2; // 继承关系，父类的指针指向子类对象，子类重写父类的虚函数 ==>> 根据对象的实际类型调用 该类型中的函数。
+//    base->print(); // 通过子类对象里面的 vfptr 找到虚函数表 ，再从表里面找到函数地址，通过函数地址找到函数地址进行调用 （空间、时间 换来了灵活性，减少了代码量）
+//    delete base;
 //    Child child;
 //    std::cout << sizeof(child) << std::endl;
 }
