@@ -33,10 +33,13 @@ public:
     Base(){
         std::cout << "Base构造被调用" << std::endl;
     }
-    // 纯虚析构
-    virtual ~Base() = 0;
+    // 纯虚析构(强制子类重写析构)
+//    virtual ~Base() = 0;
+    virtual ~Base(){
+        std::cout << "Base虚析构被调用" << std::endl;
+    };
 
-    // 虚函数表指针
+    // 虚函数
     virtual void print() {
         std::cout << "Base print被调用" << std::endl;
     }
@@ -46,13 +49,13 @@ public:
 
     // final 不允许子类重写
     virtual void funcOfFinal() final {
-
+        std::cout << "Base funcOfFinal被调用" << std::endl;
     };
 };
-Base::~Base() {
-    std::cout << "Base析构被调用" << std::endl;
-    //
-}
+//Base::~Base() {
+//    std::cout << "Base析构被调用" << std::endl;
+//    //
+//}
 
 // 被声明为final的类不能继续派生
 class Child final : public Base {
@@ -80,45 +83,58 @@ public:
     Child2(){
         std::cout << "Child2构造被调用" << std::endl;
     }
-    ~Child2(){
-        std::cout << "Child2析构被调用" << std::endl;
-    }
+//    ~Child2(){
+//        std::cout << "Child2析构被调用" << std::endl;
+//    }
     virtual void print() override {
         std::cout << "Child2 print被调用" << std::endl;
     }
     virtual void fun() {
-
+        std::cout << "Child2 fun被调用" << std::endl;
     }
 };
 
-// void (*t)();
-void test(){
-
-}
-void test1(){
-
-}
-
-
 typedef long long u64;
-typedef void(*func)();
-typedef void(*t)();
+typedef void(*VIRTUAL_FUNC)();
+
+void testPolymorphism();
+void testGetVfptrAndInvoke();
 int main() {
-    // 20
+    // testPolymorphism();
+    testGetVfptrAndInvoke();
+}
+
+// 测试通过对象拿到虚函数表指针、通过表指针去调用虚函数
+void testGetVfptrAndInvoke() {
+    std::cout << "-------测试通过对象拿到虚函数表指针、通过表指针去调用虚函数--------" << std::endl;
     Child2 a;
-    // 将(&a)强制类型转换为(u64 *)，来把从&a开始的8个字节当作一个整体，
+    // 将(&a)强制类型转换为(u64 *)，来把从&a开始的8个字节当作一个整体，这8个字节就是vfptr存储的值
     u64 *addrOfA = (u64 *)&a;
+    // 然后对其进行解引用，就相当于取出这8个字节中的数据，8个字节编码后的值就是虚函数表的首地址 (等同u64* arr = (u64*)*addrOfA;)
     long long  vaule = *addrOfA;
-    u64* adress = (u64*)vaule;
-    // 然后对其进行解引用，就相当于取出这4个字节中的数据，取出的数据就是虚函数表的地址
-    u64* arr = (u64*)*addrOfA;
+    // 将数值转为地址(指针)类型，此时就拿到了 指向虚函数表 的指针
+    u64* vfptr = (u64*)vaule;
 
-    t t1 = &test;
+    // 用指针进行虚函数的调用
+    std::cout << "-------虚函数调用开始--------" << std::endl;
+    std::cout << "--> 调用vfptr[0]: ";
+    auto f0 = (VIRTUAL_FUNC)vfptr[0];
+    f0();
+    std::cout << "--> 调用vfptr[1]: ";
+    auto f1 = (VIRTUAL_FUNC)vfptr[1];
+    f1();
+    std::cout << "--> 调用vfptr[2]: ";
+    auto f2 = (VIRTUAL_FUNC)vfptr[2];
+    f2();
+    std::cout << "-------虚函数调用结束--------" << std::endl;
+}
 
-
-//    Base *base = new Child2; // 继承关系，父类的指针指向子类对象，子类重写父类的虚函数 ==>> 根据对象的实际类型调用 该类型中的函数。
-//    base->print(); // 通过子类对象里面的 vfptr 找到虚函数表 ，再从表里面找到函数地址，通过函数地址找到函数地址进行调用 （空间、时间 换来了灵活性，减少了代码量）
-//    delete base;
-//    Child child;
-//    std::cout << sizeof(child) << std::endl;
+// 测试多态性
+void testPolymorphism() {
+    std::cout << "-------多态性的测试--------" << std::endl;
+    Base *base = new Child2; // 继承关系，父类的指针指向子类对象，子类重写父类的虚函数 ==>> 根据对象的实际类型调用 该类型中的函数。
+    base->print(); // 通过子类对象里面的 vfptr 找到虚函数表 ，再从表里面找到函数地址，通过函数地址找到函数地址进行调用 （空间、时间 换来了灵活性，减少了代码量）
+    delete base;
+    Child child;
+    std::cout << sizeof(child) << std::endl;
 }
